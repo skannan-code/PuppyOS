@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <script src = "./script.js"></script>
+    <link rel="stylesheet" type = "text/css" href="styles.css" />
+    <title>PuppyOS</title>
+    <style>
+        #desktop {
+            bottom: 40px;
+            left:0;
+            width: 100%;
+            height: calc(100vh - 40px);
+        }
+        #welcomeheader {
+            touch-action: none;
+            user-select: none;
+            cursor: move;
+        }
+    </style>
+</head>
+<script>
+    function updateTime() {
+        let currentTime = new Date().toLocaleString();
+        let timeText = document.querySelector("#timeElement");
+        timeText.innerHTML = currentTime;
+    }
+    setInterval(updateTime, 1000);
+</script>
+<body style = "font-family: Comic Sans Ms,serif;background-image: url('https://image.jimcdn.com/app/cms/image/transf/none/path/sa6549607c78f5c11/image/i9d6e7fb91ac77594/version/1490381820/best-landscapes-in-europe-godafoss-waterfall-at-sunset-iceland-europe-copyright-ronnybas.jpg');background-repeat: no-repeat;background-size: cover;">
+    <div id = "taskbar" style = "display: flex;justify-content: space-between;align-items: center;color: darkslateblue;position:fixed;top:0;width:100%;height:1.5cm;background-color: lightcoral">
+        <h3 style="margin-left: 16px;font-weight:700;background-color:rgba(256,256,256,354);padding: 4px 12px; border-radius:77px;">
+            <p style = "cursor: pointer" id = "welcomeopen">PuppyOS: Click to open Welcome Screen!</p>
+        </h3>
+        <h3 id = "timeElement" style = "margin-right: 16px;background-color:rgba(256,256,256,0.9);padding: 4px 12px; border-radius:16px;">
+            3/15/2026 1:13 PM
+        </h3>
+    </div>
+    <div class = "selected" id = "desktopApps" style = "padding-top: 64px;padding-left:16px;">
+        <div id="notepadIcon" style="text-align: center; padding: 16px; cursor:pointer;">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/0/07/Notepad_Win11.svg" style = "width:60px;height:62px;border-radius: 18px;" alt="Notepad Icon">
+            <p style = "margin: 1px; color: white;"><b>Notepad</b></p>
+        </div>
+        <div id = "googleIcon" style="text-align: center; padding: 16px; cursor:pointer;">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1280px-Google_%22G%22_logo.svg.png" style = "width:60px;height:56px;border-radius: 18px;" alt="Google Icon">
+            <p style = "margin: 1px; color: white;"><b>Google</b></p>
+        </div>
+        <div id = "calculatorIcon" style="text-align: center; padding: 16px; cursor:pointer;">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/5/55/Windows_Calculator_icon.png" style = "width:60px;height:56px;border-radius: 18px;" alt="Calculator Icon">
+            <p style = "margin: 1px; color: white;"><b>Calculator</b></p>
+        </div>
+        <div id = "IPHelpdeskIcon" style="text-align: center; padding: 16px; cursor:pointer;">
+            <img src = "https://thumbs.dreamstime.com/b/bright-flat-ip-address-icon-showing-network-identity-digital-connection-symbol-ip-address-flat-colored-icon-internet-416629931.jpg" style = "width:60px;height:56px;border-radius: 18px;" alt="IP Helpdesk Icon">
+            <p style = "margin: 1px; color: white;"><b>IP Helpdesk</b></p>
+        </div>
+    </div>
+    <div id = "desktop">
+        <div class = "window" id = "welcome" style = "max-height:calc(100vh - 80px);overflow-y: scroll;">
+            <div class="windowheader" id="welcomeheader">
+                <div style="display:flex; gap:6px;">
+                    <div class="closebutton" id="welcomeclose"></div>
+                    <div class="minbutton" id="welcomemin"></div>
+                    <div class="maxbutton" id="welcomemax"></div>
+                </div>
+
+                <h2 style = "justify-content: center; text-align: center; align-items: center;"><b>Welcome Page: Click and Drag this Green Text to Move this Window</b></h2>
+            </div>
+            <h1 style = "margin:4px;">Welcome to PuppyOS!</h1>
+            <h2>This is an operating system that everyone can explore. It is made of open-source code and anyone can access it. Enjoy!</h2>
+            <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHVwcHl8ZW58MHx8MHx8fDA%3D" style="width:100%;height:auto;border-radius:16px;object-fit:cover;" alt="Picture of a Puppy">
+            <a href="https://en.wikipedia.org/wiki/Puppy" target="_blank" rel = "noopener noreferrer"><b><h1>Wikipedia</h1></b></a>
+            <a href="https://www.google.com" target = "_blank" rel = "noopener noreferrer"><h1><b>World Wide Web (Google)</b></h1></a>
+            <a href="https://www.google.com/search?q=pictures+of+puppies" rel = "noopener noreferrer" target = "_blank"><h1><b>Pictures of Me!</b></h1></a>
+        </div>
+    </div>
+    <div class = "window" id = "notes" style = "padding-top: 64px;padding-left:16px;height: 16cm;width: 16cm;display:none;">
+        <div class = "windowheader" id = "notesheader">
+            <div style = "display:flex; gap: 6px;">
+            <div class = "closebutton" id = "notesclose"></div>
+            <div class = "minbutton" id = "notesmin"></div>
+            <div class = "maxbutton" id = "notesmax"></div>
+        </div>
+            <h1 class = "headertext">Notepad</h1>
+            <div style = "width:16px; margin-right: 7px; height: 15px;"></div>
+        </div>
+        <div class = "notepad-content">
+            <textarea class = "notepad-text" placeholder = "Start typing here..."></textarea>
+        </div>
+    </div>
+
+    <div class = "window" id = "google" style = "padding-top: 64px;padding-left:16px;height: 16cm;width: 16cm;display:none;">
+        <div class = "windowheader" id = "googleheader">
+            <div style = "display:flex; gap: 6px;">
+                <div class = "closebutton" id = "googleclose"></div>
+                <div class = "minbutton" id = "googlemin"></div>
+                <div class = "maxbutton" id = "googlemax"></div>
+            </div>
+            <h1 class = "headertext">Google</h1>
+            <div style = "width:16px; margin-right: 7px; height: 15px;"></div>
+        </div>
+        <div class = "google-container" style = "justify-content: center; text-align: center; align-items: center;">
+            <form method="GET" action="https://www.google.com/search" target = "_blank" rel = "noopener noreferrer">
+                <input name="q" type="text" placeholder="Search Google..." style = "height: 45px;">
+                <button type="submit">Search</button>
+            </form>
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg" style = "width: 198px; height: 100px" alt = "Google Icon">
+            <img src = "https://cdn.logojoy.com/wp-content/uploads/20230801145544/Google-Logo-Evolution-Infographic-600x417.jpg" style = "width: 600px; height: 400px;" alt = "Google Evolution Logo">
+        </div>
+    </div>
+
+    <div class = "window" id = "calculator" style = "padding-top: 64px;padding-left:16px;height: 16cm;width: 16cm;display:none;">
+        <div class = "windowheader" id = "calculatorheader">
+            <div style = "display:flex; gap: 6px;">
+                <div class = "closebutton" id = "calculatorclose"></div>
+                <div class = "minbutton" id = "calculatormin"></div>
+                <div class = "maxbutton" id = "calculatormax"></div>
+            </div>
+            <h1 class = "headertext">Calculator</h1>
+            <div style = "width:16px; margin-right: 7px; height: 15px;"></div>
+        </div>
+        <div class = "calculator-content">
+            <input type = "text" id = "display" disabled>
+            <div class = "buttons">
+                <button onclick = "clearDisplay()">C</button>
+                <button onclick = "backspace()">Back<br>Space</button>
+                <button onclick = "appendValue('/')">/</button>
+                <button onclick = "appendValue('*')">*</button>
+
+                <button onclick = "appendValue('1')">1</button>
+                <button onclick = "appendValue('2')">2</button>
+                <button onclick = "appendValue('3')">3</button>
+                <button onclick = "appendValue('-')">-</button>
+
+                <button onclick = "appendValue('4')">4</button>
+                <button onclick = "appendValue('5')">5</button>
+                <button onclick = "appendValue('6')">6</button>
+                <button onclick = "appendValue('+')">+</button>
+
+                <button onclick = "appendValue('7')">7</button>
+                <button onclick = "appendValue('8')">8</button>
+                <button onclick = "appendValue('9')">9</button>
+
+                <button onclick = "appendValue('0')">0</button>
+                <button onclick = "appendValue('.')">.</button>
+                <button onclick = "calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "window" id = "IPHelpdesk" style = "padding-top: 64px;padding-left:16px;height: 16cm;width: 16cm;display:none;">
+        <div class = "windowheader" id = "IPHelpdeskheader">
+            <div style = "display:flex; gap: 6px;">
+                <div class = "closebutton" id = "IPHelpdeskclose"></div>
+                <div class = "minbutton" id = "IPHelpdeskmin"></div>
+                <div class = "maxbutton" id = "IPHelpdeskmax"></div>
+            </div>
+            <h1 class = "headertext">IP Helpdesk</h1>
+            <div style = "width:16px; margin-right: 7px; height: 15px;"></div>
+        </div>
+        <div class = "IPHelpdesk-content" style = "justify-content: center; text-align: center; align-items: center;">
+            <h3>Welcome New User!<br>Your Current IP Address is: <span id = "user-ip">Loading...</span></h3>
+            <script>
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('user-ip').textContent = data.ip;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching IP Address:', error);
+                        document.getElementById('user-ip').textContent = 'Error fetching IP Address';
+                    });
+            </script>
+            <img src = "https://cdn-icons-png.freepik.com/512/6159/6159318.png" style = "width: 600px; height: 450px;" alt = "IP Address Locator Icon">
+        </div>
+    </div>
+</body>
+</html>
