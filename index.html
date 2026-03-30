@@ -159,15 +159,17 @@
         <div class = "IPHelpdesk-content" style = "justify-content: center; text-align: center; align-items: center;">
             <h3>Welcome New User!<br>Your Current IP Address is: <span id = "user-ip">Loading...</span></h3>
             <script>
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('user-ip').textContent = data.ip;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching IP Address:', error);
-                        document.getElementById('user-ip').textContent = 'Error fetching IP Address';
-                    });
+                document.addEventListener("DOMContentLoaded", function () {
+                    fetch('https://api.ipify.org?format=json')
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('user-ip').textContent = data.ip;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching IP Address:', error);
+                            document.getElementById('user-ip').textContent = 'Error fetching IP Address: _____________ Check your system settings.';
+                        });
+                });
             </script>
             <img src = "https://cdn-icons-png.freepik.com/512/6159/6159318.png" style = "width: 600px; height: 450px;" alt = "IP Address Locator Icon">
         </div>
