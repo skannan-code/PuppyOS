@@ -27,6 +27,12 @@
     setInterval(updateTime, 1000);
 </script>
 <body style = "font-family: Comic Sans Ms,serif;background-image: url('https://image.jimcdn.com/app/cms/image/transf/none/path/sa6549607c78f5c11/image/i9d6e7fb91ac77594/version/1490381820/best-landscapes-in-europe-godafoss-waterfall-at-sunset-iceland-europe-copyright-ronnybas.jpg');background-repeat: no-repeat;background-size: cover;">
+    <div id = "splash-screen">
+        <div class = "splash-content">
+            <h1>Welcome to PuppyOS</h1>
+            <p>Press <b>Enter</b> or <b>Scroll Up</b> to start</p>
+        </div>
+    </div>
     <div id = "taskbar" style = "display: flex;justify-content: space-between;align-items: center;color: darkslateblue;position:fixed;top:0;width:100%;height:1.5cm;background-color: lightcoral">
         <h3 style="margin-left: 16px;font-weight:700;background-color:rgba(256,256,256,354);padding: 4px 12px; border-radius:77px;">
             <p style = "cursor: pointer" id = "welcomeopen">PuppyOS: Click to open Welcome Screen!</p>
@@ -51,6 +57,10 @@
         <div id = "IPHelpdeskIcon" style="text-align: center; padding: 16px; cursor:pointer;">
             <img src = "https://thumbs.dreamstime.com/b/bright-flat-ip-address-icon-showing-network-identity-digital-connection-symbol-ip-address-flat-colored-icon-internet-416629931.jpg" style = "width:60px;height:56px;border-radius: 18px;" alt="IP Helpdesk Icon">
             <p style = "margin: 1px; color: white;"><b>IP Helpdesk</b></p>
+        </div>
+        <div id = "settingsIcon" style="text-align: center; padding: 16px; cursor:pointer;">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" style = "width:60px;height:56px;border-radius: 18px;" alt="Settings Icon">
+            <p style = "margin: 1px; color: white;"><b>Settings</b></p>
         </div>
     </div>
     <div id = "desktop">
@@ -172,6 +182,44 @@
                 });
             </script>
             <img src = "https://cdn-icons-png.freepik.com/512/6159/6159318.png" style = "width: 600px; height: 450px;" alt = "IP Address Locator Icon">
+        </div>
+    </div>
+    <div class = "window" id = "settings" style = "padding-top: 64px;padding-left:16px;height: 16cm;width: 16cm;display:none;">
+        <div class = "windowheader" id = "settingsheader">
+            <div style = "display:flex; gap: 6px;">
+                <div class = "closebutton" id = "settingsclose"></div>
+                <div class = "minbutton" id = "settingsmin"></div>
+                <div class = "maxbutton" id = "settingsmax"></div>
+            </div>
+            <h1 class = "headertext">Settings</h1>
+            <div style = "width:16px; margin-right: 7px; height: 15px;"></div>
+        </div>
+        <div class = "settings-container" style = "justify-content: center; text-align: center; align-items: center;padding: 15px; font-family: sans-serif; overflow-y: auto;height: calc(100% - 60px)">
+            <section>
+                <h2 style = "margin-top:0;" >Display Settings</h2>
+                <label>Brightness</label><br>
+                <input type = "range" id = "brightnessRange" min = "20" max = "200" value = "100"><br><br>
+                <label>Contrast</label><br>
+                <input type = "range" id = "contrastRange" min = "20" max = "200" value = "100"><br><br>
+            </section>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+
+            <section>
+                <h3>Wallpapers</h3>
+                <div id = "wallpaperGallery" style = "display: grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom: 15px;">
+                    <img src = "https://i.pinimg.com/736x/15/61/58/1561587aef2154176057c566903f1abe.jpg" alt = "Forest Lake Background" class="preset-thumb" onclick="setWallpaper(this.src)" style="width:100%; height:80px; object-fit:cover; border-radius:8px; cursor:pointer; border: 2px solid transparent;">
+                    <img src = "https://www.foresthomesstore.com/cdn/shop/files/Iceland-Mornings-Mural-Wallpaper-2_1000x.jpg?v=1690919204" alt = "Canyon Waterfall" class="preset-thumb" onclick="setWallpaper(this.src)" style="width:100%; height:80px; object-fit:cover; border-radius:8px; cursor:pointer; border: 2px solid transparent;">
+                    <img src = "https://w0.peakpx.com/wallpaper/484/714/HD-wallpaper-nordic-landscape-beautiful-mountain-scenery.jpg" alt = "Mountain Scenery" class="preset-thumb" onclick="setWallpaper(this.src)" style="width:100%; height:80px; object-fit:cover; border-radius:8px; cursor:pointer; border: 2px solid transparent;">
+                    <img src = "https://img.freepik.com/premium-photo/mountains-with-lake-landscape-nature-outdoors_53876-623086.jpg?semt=ais_incoming&w=740&q=80" alt = "Forest Lake Sunset" class="preset-thumb" onclick="setWallpaper(this.src)" style="width:100%; height:80px; object-fit:cover; border-radius:8px; cursor:pointer; border: 2px solid transparent;">
+                </div>
+
+                <label>Custom URL: </label>
+                <div style = "display: flex; gap: 5px;">
+                    <input type = "text" id = "wallpaperInput" placeholder = "Paste Background Image URL..." style = "flex-grow:1; border-radius: 4px; border: 1px solid #ccc;">
+                    <button onclick="changeWallpaper()" style="height:30px; width:60px; font-size:12px;">Apply</button>
+                </div>
+            </section>
         </div>
     </div>
 </body>
