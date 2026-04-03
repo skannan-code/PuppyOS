@@ -1,5 +1,5 @@
 # PuppyOS Overview
-PuppyOS is a performance-stimulated project about that replicates the design and looks of a Linux and Ubuntu mix of software, but shows the complex variety of a windows operating system. All in all, it showcases multiple apps that allow you to do many things. These include the Notepad app, a Google app, a Calculator app, and even an IP Helpdesk app!
+PuppyOS is a performance-stimulated project about that replicates the design and looks of a Linux and Ubuntu mix of software, but shows the complex variety of a windows operating system. All in all, it showcases multiple apps that allow you to do many things. These include a Notepad app, a Google app, a Calculator app, an IP Helpdesk app, and even a settings app!
 # What does PuppyOS do?
 Adding on to the featured details mentioned above, PuppyOS can perform many tasks from letting you research hard topics all the way to finding your IP address! It features so many apps that by the time you're done using them all, your puppy would be eating it's 3rd meal of the day!
 # How do I use it?
