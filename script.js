@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const IPHelpdeskClose = document.getElementById("IPHelpdeskclose");
     const IPHelpdeskIcon = document.getElementById("IPHelpdeskIcon");
 
+    const settingsScreen = document.getElementById("settings");
+    const settingsClose = document.getElementById("settingsclose");
+    const settingsIcon = document.getElementById("settingsIcon");
+
     let biggestIndex = 10;
 
 
@@ -112,6 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("IPHelpdeskmin").addEventListener("click", () => minimizeWindow(IPHelpdeskScreen));
     document.getElementById("IPHelpdeskmax").addEventListener("click", () => toggleMaximize(IPHelpdeskScreen));
 
+    document.getElementById("settingsmin").addEventListener("click", () => minimizeWindow(settingsScreen));
+    document.getElementById("settingsmax").addEventListener("click", () => toggleMaximize(settingsScreen));
+
     openWindow(welcomeScreen);
 
     welcomeClose.addEventListener("click", () => closeWindow(welcomeScreen));
@@ -129,6 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
     IPHelpdeskClose.addEventListener("click", () => closeWindow(IPHelpdeskScreen));
     IPHelpdeskIcon.addEventListener("click", () => openWindow(IPHelpdeskScreen));
 
+    settingsClose.addEventListener("click", () => closeWindow(settingsScreen));
+    settingsIcon.addEventListener("click", () => openWindow(settingsScreen));
 
     function makeDraggable(windowEl, headerEl) {
         let offsetX = 0;
@@ -163,7 +172,36 @@ document.addEventListener("DOMContentLoaded", () => {
     makeDraggable(googleScreen, document.getElementById("googleheader"));
     makeDraggable(calculatorScreen, document.getElementById("calculatorheader"));
     makeDraggable(IPHelpdeskScreen, document.getElementById("IPHelpdeskheader"));
+    makeDraggable(settingsScreen, document.getElementById("settingsheader"));
 
+    document.body.classList.add("locked");
+
+    const splash = document.getElementById("splash-screen");
+
+    function unlockOS() {
+        if (!splash.classList.contains("splash-hidden")) {
+            splash.classList.add("splash-hidden");
+            document.body.classList.remove("locked");
+        }
+    }
+
+    document.addEventListener("keydown", (e) => {
+       if (e.key === "Enter") unlockOS();
+    });
+
+    document.addEventListener("wheel", (e) => {
+        if (e.deltaY < 0) unlockOS();
+    });
+
+    document.addEventListener("wheel", (e) => {
+        if (e.deltaY > 0) unlockOS();
+    });
+
+    let touchStart = 0;
+    document.addEventListener("touchstart", e => touchStart = e.touches[0].clientY);
+    document.addEventListener("touchend", e => {
+        if (e.changedTouches[0].clientY < touchStart + 1) unlockOS();
+    });
 
     document.querySelectorAll(".window").forEach(win => {
         win.addEventListener("pointerdown", () => {
@@ -171,4 +209,30 @@ document.addEventListener("DOMContentLoaded", () => {
             win.style.zIndex = biggestIndex;
         });
     });
+    window.setWallpaper = function(url) {
+        document.body.style.backgroundImage = `url('${url}')`;
+
+        document.querySelectorAll('.preset-thumb').forEach(img => {
+            img.style.borderColor = "transparent";
+        });
+        event.target.style.borderColor = "#003aff";
+    };
+
+    window.changeWallpaper = function() {
+        const url = document.getElementById("wallpaperInput").value;
+        if (url) {
+            document.body.style.backgroundImage = `url('${url}')`;
+        }
+    };
+
+    const brightnessRange = document.getElementById("brightnessRange");
+    const contrastRange = document.getElementById("contrastRange");
+
+    function applyFilters() {
+        const b = brightnessRange.value;
+        const c = contrastRange.value;
+        document.body.style.filter = `brightness(${b}%) contrast(${c}%)`;
+    }
+    brightnessRange.addEventListener("input", applyFilters);
+    contrastRange.addEventListener("input", applyFilters);
 });
